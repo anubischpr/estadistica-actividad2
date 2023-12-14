@@ -209,3 +209,73 @@ Analiza los 6 gráficos obtenidos y valora que aproximaciones son mejores indica
 ### Respuesta
 Según lo observado en los gráficos, se puede concluir que la aproximación de la distribución binomial a la distribución normal es mejor cuando el valor de p es igual a 0.5 y con el mayor número de ensayos, ya que en este caso la distribución binomial es simétrica y más precisa y la distribución normal también lo es. En los otros dos casos, la distribución binomial no es simétrica y la distribución normal tampoco lo es, por lo que la aproximación no es tan buena. Lo mismo podemos decir de la aproximación de la distribución binomial a la distribución de Poisson, ya que la distribución de Poisson es simétrica y la distribución binomial es simétrica cuando p = 0.5 mejorando su valor de aproximación a medida que incrementa el número de ensayos.
 Es decir, hemos tomado como factores determinantes la simetría de las distribuciones dadas por el porcentaje de probabilidad y el número de ensayos.
+
+# Tarea 2
+
+## Parte 1
+
+Indica cuál es el valor de P(90≤Xf≤100). Calcula todos los resultados aplicando las fórmulas sin usar R.
+
+### Resolución
+
+Se tiene que el peso promedio de mujeres es igual a 67.4 kg y la desviación típica de esta variable es 28.7.
+
+Si se supone que la variable aleatoria continua sigue una distribución normal, es posible convertir esta distribución a una normal estándar N(0, 1). Se tiene entonces que al tipificar las variables:
+
+Para Xf = 90 kg, Z = (90-67.4)/28.7 = 0.79.
+Para Xf = 100 kg, Z = (100-67.4)/28.7 = 1.14.
+
+De las tablas de probabilidad de una distribución normal estándar se tiene que:
+
+P(Z<=90) = 0.7852
+P(Z<=100) = 0.8729
+
+Por tanto, P(90≤Xf≤100) = 0.8729 - 0.7852 = 0.0877.
+
+## Parte 2
+
+Calcula la probabilidad con R e inserta la representación en el mismo diagrama que la anterior. (Nota: este caso se trata de datos de mujeres).
+
+### Resolución
+
+```{r}
+
+# Se definen las variables de estudio
+mean_weight = 67.4
+standard_deviation = 28.7
+value1 = 90
+value2 = 100
+
+# Se define una función para mostrar la distribución normal
+plot_normal_distribution <- function (initial_value, final_value, increment, mu, sd, x1, x2) {
+  
+  # Valores de la variable aleatoria
+  var_values <- seq(initial_value, final_value, increment)
+  
+  # Función de densidad
+  dens_function <- dnorm(var_values, mu, sd)
+  
+  # Gráfico de la distribución normal
+  plot(var_values,dens_function, type="l", xlab="", ylab="", axes=FALSE)
+  axis(side=1,at=c(initial_value, x1, x2, final_value), pos=0)
+  
+  # Se dibuja el área bajo la curva de la distribución de normal
+  dist_function_interval <- x >= x1 & x <= x2
+  polygon(c(x1,x[dist_function_interval],x2), c(0,dens_function[dist_function_interval],0), col="blue")
+  
+}
+
+# Se grafica la curva de distribución normal de la variable aleatoria peso de mujeres
+plot_normal_distribution(0, 160, 0.1, mean, standard_deviation, value1, value2)
+
+# Se define una función para calcular la probabilidad de que la variable aleatoria peso se encuentre en un rango definido 
+normal_dist_prob <- function (mu, sd, x1, x2) {
+  return (pnorm(x2, mu, sd) - pnorm(x1, mu, sd))
+}
+
+# Se ontiene la probabilidad
+probability = normal_dist_prob(mean, standard_deviation, value1, value2)
+
+probability
+
+```
