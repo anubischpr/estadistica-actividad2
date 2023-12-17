@@ -279,3 +279,23 @@ probability = normal_dist_prob(mean, standard_deviation, value1, value2)
 probability
 
 ```
+# Tarea 3
+
+Se plantea el siguiente supuesto.
+
+Se sabe que 1 de cada 1000 personas sufren una pequeña reacción a una determinada vacuna. Cada cierto tiempo se realiza un muestreo de 2000 personas para determinar cómo evoluciona la reacción.
+
+## Parte 1
+
+Suponiendo que la muestra es una variable aleatoria X_b que sigue una distribución binomial:
+- Calcula la probabilidad de la distribución.
+- Representa gráficamente la distribución en R.
+
+### Resolución
+
+```{r}
+# set.seed(1)
+x <- rbinom(1, 2000, 0.001)
+f <- dbinom(x, 2000, 0.001)
+plot(x, f, xlab="x", ylab="p",  col="blue")
+```
