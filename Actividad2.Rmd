@@ -1,70 +1,7 @@
 ---
-title: "R Notebook"
+title: "Palomino_Riquero_Christian_Actividad2"
 output: html_notebook
 ---
-
-```{r}
-dbinom(x=3,15,0.6)
-```
-```{r}
-pbinom(3,15,0.6)
-```
-```{r}
-x <- rbinom(15,15,0.6)
-```
-
-```{r}
-f <- dbinom(x,15,0.6)
-```
-
-```{r}
-plot(x,f, xlab="x", ylab="p",  col="blue")
-```
-```{r}
-x <- seq(0,160,0.1)
-```
-
-```{r}
-mu_h = 83.2
-sd_h = 22.8
-f_h <- dnorm(x,mu_h,sd_h)
-```
-
-```{r}
-plot(x,f_h, type="l", xlab="Pesos", ylab="Densidad", col="blue")
-```
-```{r}
-mu_f = 67.4
-sd_f = 28.7
-f_f <- dnorm(x,mu_f,sd_f)
-plot(x,f_h, type="l", xlab="Pesos", ylab="Densidad", col="blue")
-lines(x,f_f, col="red")
-```
-```{r}
-xb<-0:40
-fb<-dbinom(xb,2,0.5)
-barplot(fb, xlab="x", ylab="p", space=0, col="blue")
-fb<-dbinom(xb,40,0.5)
-barplot(fb, xlab="x", ylab="p", space=0, col="green",add=T)
-xn<-seq(0,40,0.1)
-fn<-dnorm(xn,2*0.5,sqrt(2*0.5*0.5))
-lines(xn+0.5,fn,col="red")
-fn<-dnorm(xn,40*0.5,sqrt(40*0.5*0.5))
-lines(xn+0.5,fn,col="black")
-```
-```{r}
-xb<-0:40
-fb<-dbinom(xb,2,0.5)
-plot(xb,fb, xlab="x", ylab="p", col="blue")
-fb<-dbinom(xb,40,0.5)
-par(new=T)
-plot(xb,fb, xlab="x", ylab="p",  col="green")
-xn<-seq(0,40,0.1)
-fn<-dnorm(xn,2*0.5,sqrt(2*0.5*0.5))
-lines(xn,fn,col="red")
-fn<-dnorm(xn,40*0.5,sqrt(40*0.5*0.5))
-lines(xn,fn,col="black")
-```
 # Tarea 1
 ## Parte 1
 Representar en un gráfico para cada valor de probabilidad p=0,5, 0,1 y 0,05, la evolución de la aproximación de las distribuciones binomiales con n=3,10,25,50 a su correspondiente distribución normal (Nota: se debe hacer un gráfico para 0,5 con todas las n, otro para 0,1 con todas las n y otro para 0,05 con todas las n).
@@ -77,10 +14,10 @@ Debido a que debemos iterar para cada valor de probabilidad con su respectivo va
 3. Definimos los valores de n que se van a iterar (3, 10, 25, 50) en un vector.
 4. Creamos un marco vacío para el gráfico.
 5. Iteramos sobre los distintos valores de n.
-5.1 Establecemos el rango de valores de x según el vector creado en el paso 3.
-5.2 Calculamos la distribución binomial.
-5.3 Calculamos la distribución normal aproximada.
-5.4 Agregamos las líneas al gráfico, utilizamos la variable "type" y "pch" para que se muestre el gráfico con puntos y líneas y un estilo diferente de punto por cada valor de "n". Por último cerramos el ciclo.
+    + Establecemos el rango de valores de x según el vector creado en el paso 3.
+    + Calculamos la distribución binomial.
+    + Calculamos la distribución normal aproximada.
+    + Agregamos las líneas al gráfico, utilizamos la variable "type" y "pch" para que se muestre el gráfico con puntos y líneas y un estilo diferente de punto por cada valor de "n". Por último cerramos el ciclo.
 6. Agregamos una leyenda al gráfico para mejorar la visualización.
 7. Ejectuamos la función para cada valor de p.
 ```{r}
@@ -147,10 +84,10 @@ Debido a que debemos iterar para cada valor de probabilidad con su respectivo va
 3. Definimos los valores de n que se van a iterar (3, 25, 50) en un vector.
 4. Creamos un marco vacío para el gráfico y defino el inio del eje y en cero (0) para mejorar visiblidad.
 5. Iteramos sobre los distintos valores de n.
-5.1 Establecemos el rango de valores de x según el vector creado en el paso 3.
-5.2 Calculamos la distribución binomial.
-5.3 Calculamos la distribución de Poisson.
-5.4 Agregamos las líneas al gráfico, utilizamos la variable "type" y "pch" para que se muestre el gráfico con puntos y líneas y un estilo diferente de punto por cada valor de "n". Por último cerramos el ciclo.
+    + Establecemos el rango de valores de x según el vector creado en el paso 3.
+    + Calculamos la distribución binomial.
+    + Calculamos la distribución de Poisson.
+    + Agregamos las líneas al gráfico, utilizamos la variable "type" y "pch" para que se muestre el gráfico con puntos y líneas y un estilo diferente de punto por cada valor de "n". Por último cerramos el ciclo.
 6. Agregamos una leyenda al gráfico para mejorar la visualización.
 7. Ejectuamos la función para cada valor de p.
 
@@ -209,3 +146,299 @@ Analiza los 6 gráficos obtenidos y valora que aproximaciones son mejores indica
 ### Respuesta
 Según lo observado en los gráficos, se puede concluir que la aproximación de la distribución binomial a la distribución normal es mejor cuando el valor de p es igual a 0.5 y con el mayor número de ensayos, ya que en este caso la distribución binomial es simétrica y más precisa y la distribución normal también lo es. En los otros dos casos, la distribución binomial no es simétrica y la distribución normal tampoco lo es, por lo que la aproximación no es tan buena. Lo mismo podemos decir de la aproximación de la distribución binomial a la distribución de Poisson, ya que la distribución de Poisson es simétrica y la distribución binomial es simétrica cuando p = 0.5 mejorando su valor de aproximación a medida que incrementa el número de ensayos.
 Es decir, hemos tomado como factores determinantes la simetría de las distribuciones dadas por el porcentaje de probabilidad y el número de ensayos.
+
+# Tarea 2
+
+## Parte 1
+
+Indica cuál es el valor de $P(90\leq Xf \leq 100)$. Calcula todos los resultados aplicando las fórmulas sin usar R.
+
+### Resolución
+
+Se tiene que el peso promedio de mujeres es igual a 67.4 kg y la desviación típica de esta variable es 28.7.
+
+Si se supone que la variable aleatoria continua sigue una distribución normal, es posible convertir esta distribución a una normal estándar N(0, 1). Se tiene entonces que al tipificar las variables:
+
+* Para $Xf = 90$ kg, $Z = (90-67.4)/28.7 = 0.79$.
+* Para $Xf = 100$ kg, $Z = (100-67.4)/28.7 = 1.14$.
+
+De las tablas de probabilidad de una distribución normal estándar se tiene que:
+
+$P(Z<=90) = 0.7852$
+$P(Z<=100) = 0.8729$
+
+Por tanto, $P(90 \leq Xf \leq 100) = 0.8729 - 0.7852 = 0.0877$.
+
+## Parte 2
+
+Calcula la probabilidad con R e inserta la representación en el mismo diagrama que la anterior. (Nota: este caso se trata de datos de mujeres).
+
+### Resolución
+
+Crearemos dos funciones, una para calcular la probabilidad de una distribución normal y otra para calcular la probabilidad de la variable aleatoria se encuentre en el rango definido.
+Para ellos realizaremos la sistematización del siguiente algoritmo:
+
+1. Se define una función para calcular la probabilidad de una distribución normal.
+    + Creamos un vector con los valores de la variable aleatoria.
+    + Calculamos la función de densidad.
+    + Graficamos la distribución normal.
+    + Dibujamos el área bajo la curva de la distribución normal.
+2. Se define una función para calcular la probabilidad de la variable aleatoria se encuentre en el rango definido.
+3. Ejecutamos las funciones
+
+```{r}
+# Se define una función para mostrar la distribución normal
+plot_normal_distribution <- function(initial_value, final_value, increment, mu, sd, x1, x2) {
+  
+  # Valores de la variable aleatoria
+  var_values <- seq(initial_value, final_value, increment)
+  
+  # Función de densidad
+  dens_function <- dnorm(var_values, mu, sd)
+  
+  # Gráfico de la distribución normal
+  plot(var_values, dens_function, type="l", xlab="", ylab="", axes=FALSE)
+  axis(side=1, at=c(initial_value, x1, x2, final_value), pos=0)
+  
+  # Se dibuja el área bajo la curva de la distribución normal
+  dist_function_interval <- var_values >= x1 & var_values <= x2
+  polygon(c(x1, var_values[dist_function_interval], x2), c(0, dens_function[dist_function_interval], 0), col="blue")
+  
+}
+```
+
+```{r}
+# Se define una función para calcular la probabilidad de que la variable aleatoria peso se encuentre en un rango definido 
+normal_dist_prob <- function (mu, sd, x1, x2) {
+  return (pnorm(x2, mu, sd) - pnorm(x1, mu, sd))
+}
+```
+
+```{r}
+# Se definen las variables de estudio
+mean_weight = 67.4
+standard_deviation = 28.7
+value1 = 90
+value2 = 100
+
+# Se grafica la curva de distribución normal de la variable aleatoria peso de mujeres
+plot_normal_distribution(0, 160, 0.1, mean_weight, standard_deviation, value1, value2)
+
+```
+
+```{r}
+# Se obtiene la probabilidad
+probability = normal_dist_prob(mean_weight, standard_deviation, value1, value2)
+print(paste("La probabilidad de que el peso de una mujer se encuentre entre 90 y 100 kg es de", probability))
+
+```
+
+# Tarea 3
+## Enunciado
+Se plantea el siguiente supuesto.
+Se sabe que 1 de cada 1000 personas sufren una pequeña reacción a una determinada vacuna. Cada cierto tiempo se realiza un muestreo de 2000 personas para determinar cómo evoluciona la reacción.
+
+## Parte 1
+Suponiendo que la muestra es una variable aleatoria $X_b$ que sigue una distribución binomial.
+
+1. Calcula la probabilidad de la distribución
+2. Representa gráficamente la distribución en R
+
+### Resolución
+Según el enunciado tenemos la siguiente información:
+
+1. Tamaño de la muestra $X_b$: (rbinom)
+2. probabilidad de que una persona sufra una reacción a la vacuna: $p = 1/1000 = 0.001$
+3. número de personas que se muestrean: $n = 2000$
+
+Con esta información, realizaríamos la sistematización del siguiente algoritmo:
+
+1. Definimos los parámetros
+2. Generamos una muestra aleatoria de la distribución binomial
+3. Calculamos la probabilidad de la distribución binomial
+4. Representamos gráficamente la distribución binomial
+```{r}
+# Parámetros
+p <- 1/1000 # probabilidad de que una persona sufra una reacción a la vacuna
+n <- 2000 # número de personas que se muestrean
+size_muestra <- 30 # Tamaño de la muestra aleatoria
+
+# Calculamos la probabilidad de la distribución binomial
+
+Xb <- rbinom(n = size_muestra, size = n, prob = p) # Muestra aleatoria de la distribución binomial
+prob <- dbinom(xb, n, p) # Probabilidad de la distribución binomial
+
+print(xb)
+print(prob)
+```
+Representamos gráficamente la distribución binomial.
+```{r}
+# Gráfico de la distribución binomial
+plot(xb, prob, col = "blue", lwd = 10, xlab = "Número de Éxitos", ylab = "Probabilidad", main = "Distribución Binomial")
+
+```
+## Parte 2
+Compara la variable aleatoria anterior con la aproximación a una variable con distribución normal $X_n$.
+
+1. Calcula la media y desviación típica de esta nueva variable
+2. Inserta en la gráfica anterior la distribución normal obtenida.
+
+### Resolución
+Según el enunciado tenemos la siguiente información:
+
+1. $\mu$ -> $n * p = 2000 * 0.001 = 2$
+2. $\sigma$ -> $\sqrt{n * p * (1 - p)} = \sqrt{2000 * 0.001 * (1 - 0.001)} = 1.414$
+
+Con esta información, realizaríamos la sistematización del siguiente algoritmo:
+
+1. Definimos los parámetros
+2. Generamos una muestra aleatoria de la distribución binomial
+3. Calculamos la probabilidad de la distribución normal
+4. Calculamos la media y desviación típica de la distribución normal
+5. Representamos gráficamente la distribución binomial y la distribución normal
+
+```{r}
+# Parámetros de la distribución normal aproximada
+mu <- n * p
+sigma <- sqrt(n * p * (1 - p))
+
+# Generar valores para la distribución normal
+x_norm <- seq(min(Xb), max(Xb), length.out = 100)
+y_norm <- dnorm(x_norm, mean = mu, sd = sigma) # Función de densidad de probabilidad de la distribución normal
+```
+Calculamos la media y desviación típica de la distribución normal
+```{r}
+# Media y desviación típica de la distribución normal
+media <- mean(x_norm)
+desviacion_tipica <- sd(x_norm)
+
+print(media)
+print(desviacion_tipica)
+```
+Representamos gráficamente la distribución binomial y la distribución normal
+```{r}
+# Graficar la muestra binomial y la distribución normal aproximada
+hist(muestra_binomial, breaks = 40, probability = TRUE, col = "blue", xlab = "Número de Éxitos", ylab = "Densidad", main = "Muestra Binomial vs. Distribución Normal Aproximada")
+lines(x_norm, y_norm, col = "red", lwd = 2)
+```
+## Parte 3
+Compara la variable aleatoria anterior con la aproximación a una variable con distribución de Poisson $X_p$.
+
+1. Calcula la tasa.
+2. Inserta en la gráfica anterior la distribución de Poisson obtenida.
+
+### Resolución
+Según el enunciado tenemos la siguiente información:
+
+1. $\lambda$ -> $n * p = 2000 * 0.001 = 2$
+2. $X_p$ -> $X_p \sim Poisson(\lambda)$
+
+Con esta información, realizaríamos la sistematización del siguiente algoritmo:
+
+1. Definimos los parámetros
+2. Calculamos la probabilidad de la distribución de Poisson
+3. Calculamos la tasa de la distribución de Poisson
+4. Representamos gráficamente la distribución binomial y la distribución de Poisson
+
+```{r}
+# Parámetros de la distribución de Poisson aproximada
+lambda <- n * p
+poisson_values <- dpois(xb, lambda)
+
+tasa <- lambda / n
+
+print(tasa)
+```
+Graficamos la distribución binomial y la distribución de Poisson
+```{r}
+# Graficar la muestra binomial, la distribución normal y la distribución de Poisson aproximada
+plot(xb, prob, col = "blue", type = "o", lwd = 2, xlab = "Número de Éxitos", ylab = "Probabilidad", main = "Distribución Binomial vs D. Normal vs. D. de Poisson")
+lines(x_norm, y_norm, col = "red", lwd = 2)
+lines(xb, poisson_values, col = "green", lwd = 2)
+
+# Agregarmos una leyenda
+legend("topright", c("D. Binomial", "D. Normal", "D. de Poisson"), col = c("blue", "red", "green"), lwd = c(1, 2, 2))
+```
+## Parte 4
+Calcula los siguientes valores y compáralos con las aproximaciones a las distribuciones indicadas (realiza la corrección de continuidad que consideres necesaria).
+
+* $P(X_b = 3)$
+* $P(2 \leq X_b \leq 4)$
+
+1. Calcular la aproximación según la distribución binomial.
+2. Calcular la aproximación según la distribución normal.
+3. Calcular la aproximación según la distribución de Poisson.
+
+### Resolución
+Según el enunciado tenemos la siguiente información:
+
+1. $P(X_b = 3)$
+2. $P(2 \leq X_b \leq 4)$
+
+Con esta información, realizaríamos la sistematización del siguiente algoritmo:
+
+1. Definimos los parámetros
+2. Calculamos la probabilidad de la distribución binomial
+3. Calculamos la probabilidad de la distribución normal
+4. Calculamos la probabilidad de la distribución de Poisson
+5. Representamos gráficamente los resultados obtenidos.
+
+$P(X_b = 3)$
+```{r}
+# Parámetros
+p <- 1/1000 # probabilidad de que una persona sufra una reacción a la vacuna
+n <- 2000 # número de personas que se muestrean
+mu <- n * p # media de la distribución binomial
+sigma <- sqrt(n * p * (1 - p)) # desviación típica de la distribución binomial
+lambda <- n * p # parámetro lambda de la distribución de Poisson
+
+# Para P(Xb = 3)
+# Calculamos la probabilidad de la distribución binomial
+pb <- pbinom(3, n, p)
+print(pb)
+
+# Calculamos la probabilidad de la distribución normal
+pn <- pnorm(3, mean = mu, sd = sigma)
+print(pn)
+
+# Calculamos la probabilidad de la distribución de Poisson
+pp <- ppois(3, lambda = lambda)
+print(pp)
+```
+Representamos gráficamente los resultados obtenidos (pb, pn, pp)
+```{r}
+# Creamos un gráfico de barras con pb, pn y pp
+bp <- barplot(c(pb, pn, pp), names.arg = c("Binomial", "Normal", "Poisson"), col = c("blue", "red", "green"), main = "P(Xb = 3)", ylab = "Probabilidad", ylim = c(0, 1))
+text(bp, c(pb, pn, pp), labels = c(pb, pn, pp), pos = 3, cex = 0.8)
+```
+
+
+$P(2 \leq X_b \leq 4)$
+```{r}
+# Para P(2 <= Xb <= 4)
+# Calculamos la probabilidad de la distribución binomial
+pb2 <- pbinom(4, n, p) - pbinom(1, n, p)
+print(pb2)
+
+# Calculamos la probabilidad de la distribución normal
+pn2 <- pnorm(4, mean = mu, sd = sigma) - pnorm(1, mean = mu, sd = sigma)
+print(pn2)
+
+# Calculamos la probabilidad de la distribución de Poisson
+pp2 <- ppois(4, lambda = lambda) - ppois(1, lambda = lambda)
+print(pp2)
+```
+Representamos gráficamente los resultados obtenidos
+```{r}
+# Graficar la muestra binomial, la distribución normal y la distribución de Poisson aproximada
+bp <- barplot(c(pb2, pn2, pp2), names.arg = c("Binomial", "Normal", "Poisson"), col = c("blue", "red", "green"), main = "P(2 <= Xb <= 4)", ylab = "Probabilidad", ylim = c(0, 0.9))
+text(bp, c(pb2, pn2, pp2), labels = c(pb2, pn2, pp2), pos = 3, cex = 0.8)
+
+```
+# Tarea 5
+
+## Enunciado
+Analiza las representaciones y los valores de probabilidad obtenidos e indica que aproximación es la más adecuada, justificando la respuesta e indicando los parámetros que han influido.
+
+### Respuesta
+Según los resultados obtenidos, la distribución de Poisson es la más adecuada para aproximar la distribución binomial, ya que los valores de probabilidad obtenidos son más cercanos a los valores de la distribución binomial.
